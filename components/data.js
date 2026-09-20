@@ -1,0 +1,127 @@
+export const services = [
+  "Meta & Google Ads",
+  "AI-driven Ad Bidding",
+  "Social Media Marketing",
+  "Website & Landing Page Optimization",
+  "E-commerce Marketing",
+  "Generative Engine Optimization",
+];
+
+export const skills = [
+  "Core Marketing Skills",
+  "Paid Social Advertising",
+  "Website Optimization",
+  "AI & Automation Skills",
+  "Data & Analytics Skills",
+  "Social Media Marketing",
+  "Content Strategy",
+  "On-page Optimization",
+  "Google Analytics 4",
+  "E-commerce Marketing",
+  "Google Tag Manager",
+  "Sales Funnel Design",
+  "WordPress Development (Astra, Elementor)",
+];
+
+export const tools = [
+  ["Google Keyword Planner", "google-keyword-planner"],
+  ["Google AI Studio", "google-ai-studio"],
+  ["Gemini", "gemini"],
+  ["Astra", "astra"],
+  ["Google Tag Manager", "google-tag-manager"],
+  ["Power BI", "power-bi"],
+  ["Instagram Ads", "instagram-ads"],
+  ["Google Ads", "google-ads"],
+  ["Canva", "canva"],
+  ["Google", "google"],
+  ["WordPress", "wordpress"],
+  ["Ads Manager", "ads-manager"],
+  ["Elementor", "elementor"],
+  ["vidIQ", "vidiq"],
+  ["Ahrefs", "ahrefs"],
+  ["Google Analytics 4", "google-analytics-4"],
+];
+
+export const portfolio = [
+  {
+    image: "/assets/cases/case-01.jpg",
+    kicker: "Paid media / dashboard",
+    title: "Performance campaigns, built around the numbers.",
+    metrics: ["Lead generation", "Spend tracking", "Reach & performance"],
+  },
+  {
+    image: "/assets/cases/case-02.jpg",
+    kicker: "Performance marketing",
+    title: "Campaign monitoring with measurable outcomes.",
+    metrics: ["10M impressions", "20% engagement", "205K new followers"],
+  },
+  {
+    image: "/assets/cases/case-03.jpg",
+    kicker: "Social creative",
+    title: "Brand campaigns designed for attention and action.",
+    metrics: ["Organic reach", "Audience growth", "Creative testing"],
+  },
+  {
+    image: "/assets/cases/case-04.jpg",
+    kicker: "Creative campaigns",
+    title: "Conversion-focused visual communication.",
+    metrics: ["Content strategy", "Paid social", "E-commerce"],
+  },
+  {
+    image: "/assets/cases/case-05.jpg",
+    kicker: "Campaign creative",
+    title: "Targeted campaigns across multiple audience needs.",
+    metrics: ["Ads", "Offers", "Audience fit"],
+  },
+  {
+    image: "/assets/cases/case-06.jpg",
+    kicker: "Analytics",
+    title: "Reporting that turns campaign activity into insight.",
+    metrics: ["Tracking", "Analytics", "Optimization"],
+  },
+  {
+    image: "/assets/cases/case-07.jpg",
+    kicker: "Data & reporting",
+    title: "Dashboards that keep performance visible.",
+    metrics: ["Trend analysis", "KPI reporting", "Decision support"],
+  },
+];
+
+export const certifications = [
+  "B.Sc. in Computer Science & Engineering (CSE) — City University (2015–2019)",
+  "Facebook & YouTube Marketing — Bohubrihi",
+  "Google Ads & SEO Fundamentals — Google Academy",
+  "Data Analysis & SQL — Bohubrihi",
+  "Data Analytics course with Power BI SQL — Tutorials Point",
+  "Cyber Security & Ethical Hacking Training",
+  "Data-Driven Digital Marketing Certification — Bongiyo",
+  "Mobile App Development — BITM",
+  "Web Development — LICT",
+];
+
+export const clients = [
+  "anondo-universal-services-limited.jpg",
+  "bikers-corner.jpg",
+  "children-s-television-foundation-of-bangladesh-ctfb.png",
+  "frame-fusion.png",
+  "adust.png",
+  "chaarcha.jpg",
+  "vestige.jpg",
+  "pranto.jpg",
+  "stella.jpg",
+  "rupayan.jpg",
+  "ict-bangla.jpg",
+  "doel-ott.jpg",
+  "mithai.jpg",
+  "cattle-camp.jpg",
+  "marks.jpg",
+  "sonargaon-university.jpg",
+  "ikigai.jpg",
+  "urbana.jpg",
+  "hr-global.jpg",
+  "enigma-tv.jpg",
+  "bridge.jpg",
+  "anondo.jpg",
+  "ala-coffee.jpg",
+  "zptp.jpg",
+];
