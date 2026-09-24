@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { scrollToSection } from "@/hooks/useLenis";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
 const links = [
@@ -15,7 +16,7 @@ export default function Nav() {
 
   const go = (id) => {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(id);
   };
 
   return (

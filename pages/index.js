@@ -317,7 +317,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="hero-badge absolute -left-4 top-10 hidden w-44 border border-ink/10 bg-white/90 p-4 shadow-xl backdrop-blur-xl sm:block">
+                <div className="hero-badge absolute -left-20 top-10 hidden w-44 border border-ink/10 bg-white/90 p-4 shadow-xl backdrop-blur-xl sm:block">
                   <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.15em] text-black/45">
                     <FiTarget className="text-signal" /> Paid media
                   </div>
@@ -329,7 +329,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="hero-badge absolute -right-4 bottom-10 hidden w-48 border border-ink/10 bg-ink p-4 text-cream shadow-xl sm:block">
+                <div className="hero-badge absolute -right-20 bottom-20 hidden w-48 border border-ink/10 bg-ink p-4 text-cream shadow-xl sm:block">
                   <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-[.15em] text-white/45">
                     <span>Performance</span>
                     <FiTrendingUp className="text-signal" />
