@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {
@@ -11,23 +11,24 @@ import {
   FiInstagram,
   FiLinkedin,
   FiMail,
-  FiMousePointer,
   FiPhone,
   FiSearch,
   FiTarget,
   FiTrendingUp,
 } from "react-icons/fi";
 import Nav from "@/components/Nav";
+import CountValue from "@/components/CountValue";
+import ToolsSection from "@/components/ToolsSection";
+import ClientLogos from "@/components/ClientLogos";
+import CertificationDetails from "@/components/CertificationDetails";
 import {
-  certifications,
-  clients,
   portfolio,
   services,
   skills,
-  tools,
 } from "@/components/data";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
+const useBrowserLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const stats = [
   ["08+", "Years experience"],
@@ -45,26 +46,6 @@ const resultMetrics = [
   ["5K", "SKUs sold", "E-commerce performance"],
 ];
 
-const toolMap = {
-  "google-keyword-planner":
-    "https://ads.google.com/home/tools/keyword-planner/",
-  "google-ai-studio": "https://aistudio.google.com/",
-  gemini: "https://gemini.google.com/",
-  astra: "https://wpastra.com/",
-  "google-tag-manager": "https://tagmanager.google.com/",
-  "power-bi": "https://powerbi.microsoft.com/",
-  "instagram-ads": "https://www.instagram.com/",
-  "google-ads": "https://ads.google.com/",
-  canva: "https://www.canva.com/",
-  google: "https://www.google.com/",
-  wordpress: "https://wordpress.org/",
-  "ads-manager": "https://www.facebook.com/business/tools/ads-manager",
-  elementor: "https://elementor.com/",
-  vidiq: "https://vidiq.com/",
-  ahrefs: "https://ahrefs.com/",
-  "google-analytics-4": "https://analytics.google.com/",
-};
-
 function SectionHeading({ number, eyebrow, title, dark = false }) {
   return (
     <div className={dark ? "text-cream" : "text-ink"}>
@@ -79,15 +60,12 @@ function SectionHeading({ number, eyebrow, title, dark = false }) {
   );
 }
 
-function CountValue({ value }) {
-  return <span className="count-value">{value}</span>;
-}
-
 export default function Home() {
   const root = useRef(null);
 
-  useLayoutEffect(() => {
+  useBrowserLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       intro
@@ -117,13 +95,13 @@ export default function Home() {
       gsap.utils.toArray("[data-reveal]").forEach((el) => {
         gsap.fromTo(
           el,
-          { y: 42, opacity: 0 },
+          { y: 12, opacity: 0.7 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.95,
+            duration: 0.35,
             ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 86%", once: true },
+            scrollTrigger: { trigger: el, start: "top bottom+=100", once: true, fastScrollEnd: true },
           },
         );
       });
@@ -162,40 +140,6 @@ export default function Home() {
           end: "bottom top",
           scrub: true,
         },
-      });
-
-      gsap.to(".client-track", {
-        xPercent: -50,
-        duration: 28,
-        ease: "none",
-        repeat: -1,
-      });
-      gsap.to(".tool-track", {
-        xPercent: -50,
-        duration: 40,
-        ease: "none",
-        repeat: -1,
-      });
-
-      gsap.utils.toArray(".count-value").forEach((el) => {
-        const text = el.textContent.trim();
-        const numeric = parseFloat(text.replace(/[^0-9.]/g, ""));
-        if (Number.isNaN(numeric)) return;
-        const suffix = text.replace(/[0-9.]/g, "");
-        const obj = { val: 0 };
-        gsap.fromTo(
-          obj,
-          { val: 0 },
-          {
-            val: numeric,
-            duration: 1.25,
-            ease: "power2.out",
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
-            onUpdate: () => {
-              el.textContent = `${numeric % 1 ? obj.val.toFixed(0) : Math.round(obj.val)}${suffix}`;
-            },
-          },
-        );
       });
 
       const dot = document.querySelector(".cursor-dot");
@@ -381,7 +325,7 @@ export default function Home() {
           <div className="mt-16 grid gap-10 lg:grid-cols-[.85fr_1.15fr]">
             <div data-reveal className="about-card">
               <div className="about-number">
-                08<span>+</span>
+                <CountValue value="08+" />
               </div>
               <div className="mt-3 text-xs font-black uppercase tracking-[.15em] text-white/45">
                 Years experience
@@ -503,33 +447,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TOOLS */}
-      <section className="tools-section overflow-hidden border-y border-ink/10 bg-white py-10">
-        <div className="mx-auto max-w-[1500px] px-5 pb-7 sm:px-8 lg:px-12">
-          <div className="section-kicker">
-            <span>03A</span>
-            <span>Tools &amp; platforms</span>
-          </div>
-        </div>
-        <div className="overflow-hidden">
-          <div className="tool-track flex w-max gap-3">
-            {[...tools, ...tools].map(([name, key], index) => (
-              <a
-                key={`${key}-${index}`}
-                href={toolMap[key]}
-                target="_blank"
-                rel="noreferrer"
-                className="tool-chip"
-              >
-                <span className="tool-chip-mark">
-                  <FiMousePointer />
-                </span>
-                {name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ToolsSection />
 
       {/* WORK */}
       <section id="work" className="section-pad bg-white">
@@ -584,7 +502,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="section-pad bg-ink text-cream">
+      <section id="results" className="section-pad bg-ink text-cream">
         <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
           <SectionHeading
             dark
@@ -622,15 +540,7 @@ export default function Home() {
             eyebrow="Clients"
             title="Brands, institutions and teams I have worked with."
           />
-        </div>
-        <div className="mt-14 overflow-hidden border-y border-ink/10 py-8">
-          <div className="client-track flex w-max gap-3">
-            {[...clients, ...clients].map((file, index) => (
-              <div key={`${file}-${index}`} className="client-logo-v2">
-                <img src={`/assets/clients/${file}`} alt="" loading="lazy" />
-              </div>
-            ))}
-          </div>
+          <ClientLogos />
         </div>
       </section>
 
@@ -642,36 +552,7 @@ export default function Home() {
             eyebrow="Certification"
             title="A cross-disciplinary foundation behind the marketing work."
           />
-          <div className="mt-14 grid gap-0 border-t-2 border-ink lg:grid-cols-[.35fr_1fr]">
-            <div
-              data-reveal
-              className="border-b border-ink/10 py-7 lg:border-r lg:pr-10"
-            >
-              <div className="text-xs font-black uppercase tracking-[.16em] text-signal">
-                Education &amp; training
-              </div>
-              <p className="mt-4 max-w-xs text-sm leading-6 text-black/45">
-                Formal education plus training across digital marketing,
-                analytics, web and technology.
-              </p>
-            </div>
-            <div>
-              {certifications.map((item, index) => (
-                <div
-                  key={item}
-                  data-reveal
-                  className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-ink/10 py-6 sm:grid-cols-[4rem_1fr] sm:gap-7"
-                >
-                  <span className="pt-1 text-xs font-black text-black/25">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="text-lg font-bold leading-7 tracking-[-.02em] sm:text-xl">
-                    {item}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <CertificationDetails />
         </div>
       </section>
 
